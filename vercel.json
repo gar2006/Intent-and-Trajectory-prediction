@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "root": "demo_site",
   "rewrites": [
     { "source": "/(.*)", "destination": "/$1" }
   ]
