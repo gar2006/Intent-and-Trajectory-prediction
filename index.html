@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VRU Forecast Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">VRU Forecast Demo</p>
+        <h1>Explaining the model in plain language</h1>
+        <p class="lede">
+          This demo shows what the road user did, what actually happened next,
+          the three futures the model considered most plausible, and a simple risk reading.
+        </p>
+      </section>
+
+      <section class="panel controls">
+        <div>
+          <label for="sampleSelect">Choose a validation example</label>
+          <select id="sampleSelect"></select>
+        </div>
+        <div class="sample-meta">
+          <span id="agentTypeBadge" class="agent-type-badge"></span>
+          <span id="sampleToken"></span>
+          <span id="agentId"></span>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel viz-panel">
+          <div class="panel-header">
+            <h2>What the model sees</h2>
+            <p>Black = past path, Green = actual future, Colors = predicted futures</p>
+          </div>
+          <svg id="trajectoryChart" viewBox="0 0 600 600" aria-label="Trajectory chart"></svg>
+          <div class="legend">
+            <span><i class="dot past"></i>Observed past</span>
+            <span><i class="dot future"></i>Actual future</span>
+            <span><i class="dot mode1"></i>Prediction 1</span>
+            <span><i class="dot mode2"></i>Prediction 2</span>
+            <span><i class="dot mode3"></i>Prediction 3</span>
+          </div>
+        </article>
+
+        <aside class="stack">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Plain-English summary</h2>
+            </div>
+            <p id="summaryText" class="summary"></p>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Predicted intent</h2>
+            </div>
+            <div class="intent-pill" id="intentLabel"></div>
+            <div id="intentBars" class="bars"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Risk reading</h2>
+            </div>
+            <div id="riskBadge" class="risk-badge"></div>
+            <p id="riskScore" class="risk-score"></p>
+            <ul id="riskReasons" class="risk-reasons"></ul>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Three possible futures</h2>
+            </div>
+            <div id="modeCards" class="mode-cards"></div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="panel explainer">
+        <h2>How to read this</h2>
+        <div class="explainer-grid">
+          <p>The black line is where the road user has already been.</p>
+          <p>The green line is what really happened after that moment.</p>
+          <p>The colored lines are the model's three guesses about what might happen next.</p>
+          <p>The percentages show how strongly the model believes each guess, and the risk card summarizes how uncertain or behaviorally sensitive the scene looks.</p>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
